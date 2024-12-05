@@ -1,0 +1,27 @@
+---
+import Profile from "../components/Profile.astro"
+---
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Astro Basics</title>
+	</head>
+	<body>
+		<Profile name={"Alexis"} bio={"Ing sistemas"} theme="light" imageURL="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmutQ_QG51ASXwqFqKLvPYIVDdc5dUaYGmOw&s"></Profile>
+		<Profile name={"Maria"} bio={"ing sistemas"} theme="light" imageURL="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQCLbYj1jK2jtAhgjO8p1jPkHgCgFBX_7Nq-A&s"></Profile>
+		<slot />
+	</body>
+</html>
+
+<style>
+	html,
+	body {
+		width: 100%;
+		height: 100%;
+		@apply flex items-center justify-center space-x-24;
+	}
+</style>

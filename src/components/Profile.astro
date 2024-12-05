@@ -1,0 +1,56 @@
+---
+export interface Props {
+    name: String,
+    bio: String,
+    imageURL: string,
+    theme: 'light' | 'dark'
+}
+const {name, bio, imageURL, theme} = Astro.props;
+---
+
+<div class={`card ${theme}`}>
+    <img src={imageURL} alt="" class="image">
+    <p>{name}</p>
+    <p>{bio}</p>
+    <button class="toggle-theme">Cambiar color</button>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const toggleButtons = document.querySelectorAll('.toggle-theme');
+
+        toggleButtons.forEach((button) => {
+            button.addEventListener('click', () => {
+                const card = button.closest('.card');
+                if (card) {
+                    if (card.classList.contains('light')) {
+                        card.classList.replace('light', 'dark');
+                    } else {
+                        card.classList.replace('dark', 'light');
+                    }
+                }
+            });
+        });
+    });
+</script>
+
+<style>
+    .card{
+        @apply w-[300px] flex h-[600px] rounded-3xl flex-col justify-center items-center;
+    }
+
+    .image{
+        @apply rounded-full w-[48px] h-[48px];
+    }
+
+    .card.light {
+        background-color: #fff;
+        color: #333;
+        @apply transition-colors;
+    }
+    .card.dark {
+        background-color: #333;
+        color: #fff;
+        @apply transition-colors;
+    }
+</style>
